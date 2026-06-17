@@ -361,18 +361,12 @@ body.nav-open { overflow: hidden; }
 .hero__media { position: absolute; inset: 0; z-index: 0; background: var(--bg-0); }
 .hero__video {
   width: 100%; height: 100%; object-fit: cover;
-  opacity: 0.72; /* high opacity — cosmic video IS the background */
+  opacity: 1; /* full — cosmic video IS the atmosphere */
 }
 .hero__overlay {
   position: absolute; inset: 0;
-  /* Light scrim — lets cosmic breathe in the middle, darkens top/bottom for readability */
-  background: linear-gradient(
-    180deg,
-    rgba(5,11,31,0.45) 0%,
-    rgba(5,11,31,0.18) 30%,
-    rgba(5,11,31,0.15) 55%,
-    rgba(5,11,31,0.52) 100%
-  );
+  /* Edge vignette only — centre stays bright, corners darken for readability */
+  background: radial-gradient(ellipse at center, transparent 30%, rgba(5,11,31,0.65) 100%);
 }
 
 /* Atmospheric accent glows layered on top of the cosmic video */
@@ -399,10 +393,10 @@ body.nav-open { overflow: hidden; }
   opacity: 0.028; mix-blend-mode: overlay;
 }
 
-/* Soft edge vignette — only darkens far corners, not the centre */
+/* Vignette — additional corner darkening on top of overlay */
 .hero__vignette {
   position: absolute; inset: 0; z-index: 2; pointer-events: none;
-  background: radial-gradient(ellipse 90% 80% at 50% 50%, transparent 45%, rgba(5,11,31,0.45) 100%);
+  background: radial-gradient(ellipse 85% 75% at 50% 50%, transparent 40%, rgba(5,11,31,0.35) 100%);
 }
 
 /* Floating glass cards — z-index 10, below content layer (20) */
@@ -411,10 +405,10 @@ body.nav-open { overflow: hidden; }
   position: absolute;
   padding: 0.875rem 1.1rem;
   border-radius: 18px;
-  background: rgba(5,11,31,0.55);
-  backdrop-filter: blur(28px) saturate(180%); -webkit-backdrop-filter: blur(28px) saturate(180%);
-  border: 1px solid rgba(255,255,255,0.12);
-  box-shadow: 0 24px 64px -24px rgba(0,0,0,0.7), inset 0 1px 0 rgba(255,255,255,0.10);
+  background: rgba(15,25,45,0.65);
+  backdrop-filter: blur(30px) saturate(180%); -webkit-backdrop-filter: blur(30px) saturate(180%);
+  border: 1px solid rgba(255,255,255,0.15);
+  box-shadow: 0 24px 64px -24px rgba(0,0,0,0.7), inset 0 1px 0 rgba(255,255,255,0.12);
   min-width: 142px; max-width: 200px;
   will-change: transform;
 }
@@ -484,38 +478,37 @@ body.nav-open { overflow: hidden; }
   animation: pulse-dot 2s ease-in-out infinite;
 }
 
-/* WORDMARK — Geist Black, viewport-safe, never wraps */
+/* WORDMARK — clean solid white, no effects, viewport-safe */
 .hero__wordmark {
+  position: relative;
   font-family: var(--font-geist-sans, 'Geist', system-ui, -apple-system, sans-serif);
   font-size: clamp(2.5rem, 9vw, 8rem);
   font-weight: 900;
   letter-spacing: -0.04em;
   line-height: 0.9;
-  color: #F6FAFD;
+  color: #ffffff;
   text-transform: uppercase;
   white-space: nowrap;
   max-width: 90vw;
-  overflow: hidden;
-  text-shadow:
-    0 4px 32px rgba(5,11,31,0.65),
-    0 0 80px rgba(103,137,181,0.30),
-    0 0 140px rgba(103,137,181,0.15);
-  animation: wordmark-shimmer 8s ease-in-out infinite;
-  perspective: 600px;
+  overflow: visible;
+  text-shadow: none;
+  -webkit-text-fill-color: #ffffff;
+  filter: none;
+  opacity: 1;
+}
+/* Subtle dark area BEHIND the wordmark — keeps it readable against bright cosmic */
+.hero__wordmark::before {
+  content: '';
+  position: absolute;
+  inset: -30px -60px;
+  background: radial-gradient(ellipse at center, rgba(5,11,31,0.32) 0%, transparent 68%);
+  z-index: -1;
+  pointer-events: none;
 }
 @media (max-width: 480px) {
   .hero__wordmark { font-size: clamp(2rem, 11vw, 3.5rem); letter-spacing: -0.03em; }
 }
 .hero__letter { display: inline-block; }
-
-@keyframes wordmark-shimmer {
-  0%, 100% {
-    text-shadow: 0 0 120px rgba(103,137,181,0.26), 0 0 50px rgba(103,137,181,0.12);
-  }
-  50% {
-    text-shadow: 0 0 160px rgba(196,212,232,0.32), 0 0 70px rgba(103,137,181,0.20);
-  }
-}
 
 /* Sub-headline */
 .hero__sub {
