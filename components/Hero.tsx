@@ -54,6 +54,8 @@ export default function Hero() {
         <div className="hero__cosmic" />
         <div className="hero__grain" />
         <div className="hero__vignette" />
+        {/* Bottom scrim — keeps top cosmic-bright, darkens bottom for small text */}
+        <div className="hero__scrim" />
       </div>
 
       {/* ── Layer 2: Floating glass cards (desktop + pointer only) ── */}

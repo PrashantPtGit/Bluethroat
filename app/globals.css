@@ -399,6 +399,19 @@ body.nav-open { overflow: hidden; }
   background: radial-gradient(ellipse 85% 75% at 50% 50%, transparent 40%, rgba(5,11,31,0.35) 100%);
 }
 
+/* Bottom-half scrim — top stays cosmic-bright, fades dark for small text below wordmark */
+.hero__scrim {
+  position: absolute; inset: 0; z-index: 5; pointer-events: none;
+  background: linear-gradient(
+    180deg,
+    transparent        0%,
+    transparent        40%,
+    rgba(5,11,31,0.38) 60%,
+    rgba(5,11,31,0.72) 82%,
+    rgba(5,11,31,0.88) 100%
+  );
+}
+
 /* Floating glass cards — z-index 10, below content layer (20) */
 .hero__cards { position: absolute; inset: 0; z-index: 10; pointer-events: none; overflow: hidden; }
 .hcard {
@@ -513,19 +526,33 @@ body.nav-open { overflow: hidden; }
 /* Sub-headline */
 .hero__sub {
   max-width: 38ch;
-  font-size: clamp(0.95rem, 1.8vw, 1.2rem);
-  color: var(--ink-dim); font-weight: 400; line-height: 1.65;
+  font-size: clamp(1rem, 1.8vw, 1.2rem);
+  color: #ffffff; font-weight: 500; line-height: 1.65;
+  text-shadow: 0 2px 12px rgba(0,0,0,0.55);
 }
 
 /* Meta line */
 .hero__meta {
-  font-size: 0.72rem; letter-spacing: 0.1em; text-transform: uppercase;
-  font-weight: 600; color: var(--ink-faint);
+  font-size: 0.72rem; letter-spacing: 0.15em; text-transform: uppercase;
+  font-weight: 600; color: #B3CFE5;
+  text-shadow: 0 1px 8px rgba(0,0,0,0.65);
 }
 
 /* CTAs */
 .hero__cta {
   display: flex; flex-wrap: wrap; align-items: center; justify-content: center; gap: 1rem; margin-top: 0.25rem;
+}
+/* Secondary button override for hero — needs to pop on bright cosmic bg */
+.hero__cta .btn-secondary {
+  background: rgba(15,25,45,0.50);
+  backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(255,255,255,0.30);
+  color: #ffffff;
+  text-shadow: 0 1px 4px rgba(0,0,0,0.4);
+}
+.hero__cta .btn-secondary:hover {
+  background: rgba(15,25,45,0.70);
+  border-color: rgba(255,255,255,0.50);
 }
 html.js .hero__cta { opacity: 0; transform: translateY(14px); transition: opacity 0.8s var(--ease) 0.85s, transform 0.8s var(--ease) 0.85s; }
 html.js body.loaded .hero__cta { opacity: 1; transform: none; }
