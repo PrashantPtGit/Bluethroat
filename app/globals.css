@@ -352,54 +352,87 @@ body.nav-open { overflow: hidden; }
 .hero {
   min-height: 100dvh;
   display: flex; flex-direction: column; align-items: center; justify-content: center;
-  position: relative; overflow: hidden; text-align: center;
+  position: relative; overflow: hidden; overflow-x: hidden; text-align: center;
   padding: 140px 0 100px;
 }
+@media (max-width: 768px) { .hero { padding: 80px 0 60px; } }
 
 /* Media stack */
 .hero__media { position: absolute; inset: 0; z-index: 0; background: var(--bg-0); }
 .hero__video {
   width: 100%; height: 100%; object-fit: cover;
-  opacity: 0.28; /* subtle — palette is the star, not the video */
+  opacity: 0.72; /* high opacity — cosmic video IS the background */
 }
 .hero__overlay {
   position: absolute; inset: 0;
-  background:
-    linear-gradient(165deg, rgba(6,8,20,0.94) 0%, rgba(15,23,41,0.7) 50%, rgba(6,8,20,0.94) 100%),
-    radial-gradient(120% 50% at 50% 100%, rgba(103,137,181,0.06), transparent 60%);
+  /* Light scrim — lets cosmic breathe in the middle, darkens top/bottom for readability */
+  background: linear-gradient(
+    180deg,
+    rgba(5,11,31,0.45) 0%,
+    rgba(5,11,31,0.18) 30%,
+    rgba(5,11,31,0.15) 55%,
+    rgba(5,11,31,0.52) 100%
+  );
 }
 
-/* Film grain */
-.hero__grain {
+/* Atmospheric accent glows layered on top of the cosmic video */
+.hero__cosmic {
   position: absolute; inset: 0; z-index: 1; pointer-events: none;
+  background:
+    radial-gradient(ellipse 60% 50% at 18% 62%, rgba(103,137,181,0.18) 0%, transparent 65%),
+    radial-gradient(ellipse 50% 42% at 82% 36%, rgba(196,212,232,0.12) 0%, transparent 60%),
+    radial-gradient(ellipse 55% 45% at 50% 12%, rgba(103,137,181,0.14) 0%, transparent 55%),
+    radial-gradient(ellipse 40% 55% at 70% 75%, rgba(103,137,181,0.10) 0%, transparent 65%);
+  animation: cosmic-drift 14s ease-in-out infinite alternate;
+}
+@keyframes cosmic-drift {
+  0%   { opacity: 0.7;  transform: scale(1.0); }
+  50%  { opacity: 1.0; }
+  100% { opacity: 0.85; transform: scale(1.05); }
+}
+
+/* Film grain — slightly more visible over bright bg */
+.hero__grain {
+  position: absolute; inset: 0; z-index: 2; pointer-events: none;
   background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
   background-size: 160px 160px;
-  opacity: 0.035; mix-blend-mode: screen;
+  opacity: 0.028; mix-blend-mode: overlay;
 }
 
-/* Radial vignette — darkens edges, keeps centre bright */
+/* Soft edge vignette — only darkens far corners, not the centre */
 .hero__vignette {
-  position: absolute; inset: 0; z-index: 1; pointer-events: none;
-  background: radial-gradient(ellipse 80% 70% at 50% 50%, transparent 40%, rgba(6,8,20,0.55) 100%);
+  position: absolute; inset: 0; z-index: 2; pointer-events: none;
+  background: radial-gradient(ellipse 90% 80% at 50% 50%, transparent 45%, rgba(5,11,31,0.45) 100%);
 }
 
-/* Floating glass cards */
-.hero__cards { position: absolute; inset: 0; z-index: 2; pointer-events: none; overflow: hidden; }
+/* Floating glass cards — z-index 10, below content layer (20) */
+.hero__cards { position: absolute; inset: 0; z-index: 10; pointer-events: none; overflow: hidden; }
 .hcard {
   position: absolute;
-  padding: 1rem 1.25rem;
+  padding: 0.875rem 1.1rem;
   border-radius: 18px;
-  background: rgba(15,23,41,0.62);
-  backdrop-filter: blur(22px) saturate(180%); -webkit-backdrop-filter: blur(22px) saturate(180%);
-  border: 1px solid rgba(103,137,181,0.16);
-  box-shadow: 0 24px 64px -24px rgba(0,0,0,0.55), inset 0 1px 0 rgba(255,255,255,0.07);
-  min-width: 160px;
+  background: rgba(5,11,31,0.55);
+  backdrop-filter: blur(28px) saturate(180%); -webkit-backdrop-filter: blur(28px) saturate(180%);
+  border: 1px solid rgba(255,255,255,0.12);
+  box-shadow: 0 24px 64px -24px rgba(0,0,0,0.7), inset 0 1px 0 rgba(255,255,255,0.10);
+  min-width: 142px; max-width: 200px;
   will-change: transform;
 }
-.hcard--1 { top: 18%; right: clamp(3%, 8%, 10%); }
-.hcard--2 { bottom: 24%; left: clamp(3%, 6%, 9%); }
-.hcard--3 { top: 30%; left: clamp(2%, 6%, 8%); }
-@media (max-width: 900px) { .hero__cards { display: none; } }
+/* Asymmetric: top-left, bottom-left, top-right */
+.hcard--1 { top: 30%;    left: 4%; }
+.hcard--2 { bottom: 25%; left: 4%; }
+.hcard--3 { top: 28%;    right: 4%; }
+@media (max-width: 768px) { .hero__cards { display: none; } }
+
+/* Inner float — independent CSS animation, separate from framer parallax */
+.hcard__float { display: contents; }
+@keyframes hcard-float {
+  0%, 100% { transform: translateY(0px); }
+  50%       { transform: translateY(-7px); }
+}
+.hcard--1 .hcard__float { display: block; animation: hcard-float 4.6s ease-in-out infinite; }
+.hcard--2 .hcard__float { display: block; animation: hcard-float 5.3s ease-in-out infinite 0.9s; }
+.hcard--3 .hcard__float { display: block; animation: hcard-float 4.2s ease-in-out infinite 1.7s; }
 
 .hcard__dot {
   width: 6px; height: 6px; border-radius: 50%;
@@ -422,22 +455,26 @@ body.nav-open { overflow: hidden; }
   color: var(--ink-dim);
 }
 
-/* Main content */
+/* Main content — z-index 20 sits above cards (10) */
 .hero__content {
-  position: relative; z-index: 3;
+  position: relative; z-index: 20;
   display: flex; flex-direction: column; align-items: center;
-  gap: 1.5rem;
+  gap: 0;
 }
+.hero__eyebrow  { margin-bottom: 2rem; }
+.hero__wordmark { margin-bottom: 2.5rem; }
+.hero__sub      { margin-bottom: 1.5rem; }
+.hero__meta     { margin-bottom: 3rem; }
 
 /* Eyebrow pill */
 .hero__eyebrow {
   display: inline-flex; align-items: center; gap: 0.6rem; flex-wrap: wrap; justify-content: center;
   padding: 0.5rem 1.25rem; border-radius: 100px;
-  font-size: 0.72rem; font-weight: 500; letter-spacing: 0.01em; color: var(--ink-dim);
-  background: rgba(15,23,41,0.65);
-  backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px);
-  border: 1px solid rgba(103,137,181,0.22);
-  box-shadow: inset 0 1px 0 rgba(255,255,255,0.06);
+  font-size: 0.72rem; font-weight: 500; letter-spacing: 0.01em; color: rgba(255,255,255,0.75);
+  background: rgba(5,11,31,0.50);
+  backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(255,255,255,0.10);
+  box-shadow: 0 4px 24px rgba(0,0,0,0.3), inset 0 1px 0 rgba(255,255,255,0.08);
 }
 @media (max-width:480px) { .hero__eyebrow { font-size: 0.66rem; padding: 0.45rem 1rem; border-radius: 14px; text-align: center; } }
 
@@ -447,26 +484,37 @@ body.nav-open { overflow: hidden; }
   animation: pulse-dot 2s ease-in-out infinite;
 }
 
-/* WORDMARK — editorial Cormorant serif, the centrepiece */
+/* WORDMARK — Geist Black, viewport-safe, never wraps */
 .hero__wordmark {
-  font-family: var(--font-cormorant, 'Cormorant', Georgia, serif);
-  font-size: clamp(4.5rem, 14vw, 11rem);
-  font-weight: 700;
-  letter-spacing: -0.05em;
-  line-height: 0.93;
+  font-family: var(--font-geist-sans, 'Geist', system-ui, -apple-system, sans-serif);
+  font-size: clamp(2.5rem, 9vw, 8rem);
+  font-weight: 900;
+  letter-spacing: -0.04em;
+  line-height: 0.9;
   color: #F6FAFD;
+  text-transform: uppercase;
+  white-space: nowrap;
+  max-width: 90vw;
+  overflow: hidden;
   text-shadow:
-    0 0 100px rgba(103,137,181,0.28),
-    0 0 40px rgba(103,137,181,0.12),
-    0 3px 60px rgba(6,8,20,0.8);
-  animation: wordmark-shimmer 7s ease-in-out infinite;
+    0 4px 32px rgba(5,11,31,0.65),
+    0 0 80px rgba(103,137,181,0.30),
+    0 0 140px rgba(103,137,181,0.15);
+  animation: wordmark-shimmer 8s ease-in-out infinite;
   perspective: 600px;
+}
+@media (max-width: 480px) {
+  .hero__wordmark { font-size: clamp(2rem, 11vw, 3.5rem); letter-spacing: -0.03em; }
 }
 .hero__letter { display: inline-block; }
 
 @keyframes wordmark-shimmer {
-  0%, 100% { text-shadow: 0 0 100px rgba(103,137,181,0.28), 0 0 40px rgba(103,137,181,0.12), 0 3px 60px rgba(6,8,20,0.8); }
-  50% { text-shadow: 0 0 120px rgba(196,212,232,0.22), 0 0 60px rgba(103,137,181,0.18), 0 3px 60px rgba(6,8,20,0.8); }
+  0%, 100% {
+    text-shadow: 0 0 120px rgba(103,137,181,0.26), 0 0 50px rgba(103,137,181,0.12);
+  }
+  50% {
+    text-shadow: 0 0 160px rgba(196,212,232,0.32), 0 0 70px rgba(103,137,181,0.20);
+  }
 }
 
 /* Sub-headline */
@@ -491,7 +539,7 @@ html.js body.loaded .hero__cta { opacity: 1; transform: none; }
 
 /* Scroll indicator */
 .hero__scroll {
-  position: absolute; bottom: 2.25rem; left: 50%; transform: translateX(-50%); z-index: 3;
+  position: absolute; bottom: 2.25rem; left: 50%; transform: translateX(-50%); z-index: 20;
   display: flex; flex-direction: column; align-items: center; gap: 0.5rem;
   opacity: 0; transition: opacity 0.8s var(--ease) 1.2s;
 }
@@ -516,8 +564,9 @@ body.loaded .hero__scroll { opacity: 1; }
   .hero__cta, .hero__scroll { opacity: 1 !important; transform: none !important; transition: none !important; }
   .hero__wordmark { animation: none; }
   .hero__scroll-line { animation: none; height: 24px; opacity: 0.4; }
-  .hcard__dot { animation: none; }
-  .hero__eyebrow-dot { animation: none; }
+  .hcard__dot, .hero__eyebrow-dot { animation: none; }
+  .hcard__float { animation: none !important; }
+  .hero__cosmic { animation: none; }
 }
 
 /* ====================================================

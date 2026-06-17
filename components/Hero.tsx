@@ -24,7 +24,6 @@ export default function Hero() {
   const c3y = useTransform(springY, [-1, 1], [16, -16]);
 
   useEffect(() => {
-    // Only enable cards + parallax on pointer devices
     if (window.matchMedia('(hover: none)').matches) return;
     setReady(true);
 
@@ -51,6 +50,8 @@ export default function Hero() {
           data-bg-video
         />
         <div className="hero__overlay" />
+        {/* Atmospheric depth — animated radial glows */}
+        <div className="hero__cosmic" />
         <div className="hero__grain" />
         <div className="hero__vignette" />
       </div>
@@ -60,32 +61,38 @@ export default function Hero() {
         <div className="hero__cards" aria-hidden="true">
           {/* Card: FitBook KPI */}
           <motion.div className="hcard hcard--1" style={{ x: c1x, y: c1y }}>
-            <span className="hcard__dot" />
-            <div className="hcard__project">FitBook</div>
-            <div className="hcard__metric">60%↓</div>
-            <div className="hcard__desc">member support queries</div>
-            <div className="hcard__tags">
-              <span>3 gyms</span>
-              <span>Live</span>
+            <div className="hcard__float">
+              <span className="hcard__dot" />
+              <div className="hcard__project">FitBook</div>
+              <div className="hcard__metric">60%↓</div>
+              <div className="hcard__desc">member support queries</div>
+              <div className="hcard__tags">
+                <span>3 gyms</span>
+                <span>Live</span>
+              </div>
             </div>
           </motion.div>
 
           {/* Card: MedRed KPI */}
           <motion.div className="hcard hcard--2" style={{ x: c2x, y: c2y }}>
-            <span className="hcard__dot hcard__dot--blue" />
-            <div className="hcard__project">MedRed</div>
-            <div className="hcard__metric">90s</div>
-            <div className="hcard__desc">per clinical report</div>
+            <div className="hcard__float">
+              <span className="hcard__dot hcard__dot--blue" />
+              <div className="hcard__project">MedRed</div>
+              <div className="hcard__metric">90s</div>
+              <div className="hcard__desc">per clinical report</div>
+            </div>
           </motion.div>
 
           {/* Card: Aggregate */}
           <motion.div className="hcard hcard--3" style={{ x: c3x, y: c3y }}>
-            <div className="hcard__project">Platforms shipped</div>
-            <div className="hcard__metric">6</div>
-            <div className="hcard__tags">
-              <span>Next.js</span>
-              <span>Supabase</span>
-              <span>Stripe</span>
+            <div className="hcard__float">
+              <div className="hcard__project">Platforms shipped</div>
+              <div className="hcard__metric">6</div>
+              <div className="hcard__tags">
+                <span>Next.js</span>
+                <span>Supabase</span>
+                <span>Stripe</span>
+              </div>
             </div>
           </motion.div>
         </div>
@@ -99,16 +106,16 @@ export default function Hero() {
           500+ developers mentored · Trusted by YC-backed teams
         </div>
 
-        {/* Wordmark — editorial serif, letter-by-letter */}
+        {/* Wordmark — massive sans-serif, the dominant signal */}
         <h1 className="hero__wordmark" aria-label="Bluethroat">
           {WORDMARK.split('').map((char, i) => (
             <motion.span
               key={i}
               className="hero__letter"
               aria-hidden="true"
-              initial={{ opacity: 0, y: 36 }}
+              initial={{ opacity: 0, y: 44 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.7, delay: 0.05 + i * 0.06, ease: EASE }}
+              transition={{ duration: 0.65, delay: 0.04 + i * 0.055, ease: EASE }}
               style={{ display: 'inline-block', willChange: 'transform, opacity' }}
             >
               {char}
