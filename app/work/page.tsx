@@ -4,7 +4,7 @@ import { projects } from '@/data/projects';
 
 export const metadata: Metadata = {
   title: 'Work',
-  description: 'Six production platforms built from scratch — design, engineering, and launch. Every one is live with real users.',
+  description: 'Six platforms built from scratch — design, engineering, and launch. Most are live with real users today.',
 };
 
 export default function WorkPage() {
@@ -23,8 +23,8 @@ export default function WorkPage() {
             <span className="grad-text">that ships.</span>
           </h1>
           <p className="whero__sub">
-            Six platforms in production. Each solved a real problem for a real business.
-            Every one is live with real users.
+            Six platforms built from scratch. Each solved a real problem for a real
+            business. Most are live with real users today.
           </p>
           <p className="whero__note">
             All code, design, and infrastructure is owned 100% by the client at handoff.
@@ -184,7 +184,7 @@ export default function WorkPage() {
                 <svg aria-hidden="true" width="16" height="16"><use href="#icon-whatsapp" /></svg>
                 Start a Conversation
               </a>
-              <a href="mailto:hello@bluethroat.in" className="btn btn-secondary btn-lg">
+              <a href="mailto:hello@bluethroat.ie" className="btn btn-secondary btn-lg">
                 <svg aria-hidden="true" width="16" height="16"><use href="#icon-mail" /></svg>
                 Send an Email
               </a>

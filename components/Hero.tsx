@@ -105,7 +105,7 @@ export default function Hero() {
         {/* Eyebrow */}
         <div className="hero__eyebrow">
           <span className="hero__eyebrow-dot" aria-hidden="true" />
-          500+ developers mentored · Trusted by YC-backed teams
+          500+ developers mentored · 20+ businesses helped · Trusted by YC-backed teams
         </div>
 
         {/* Wordmark — massive sans-serif, the dominant signal */}
@@ -127,7 +127,12 @@ export default function Hero() {
 
         {/* Sub-headline */}
         <p className="hero__sub" data-reveal>
-          Automation dashboards and web platforms for non-tech professionals in Europe.
+          We build websites and tools that handle your boring work — so you can focus on
+          your customers.
+        </p>
+
+        <p className="hero__sub-sub" data-reveal>
+          Used by clinics, gyms, coaches, and brokers across Ireland, UK, and Europe.
         </p>
 
         <p className="hero__meta" data-reveal>

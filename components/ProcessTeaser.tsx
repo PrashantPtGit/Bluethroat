@@ -32,7 +32,7 @@ const steps = [
   {
     num: '03',
     title: 'Build, Launch, Support',
-    duration: '2-4 weeks',
+    duration: '3-5 days',
     description:
       'Daily progress. Real staging URL from day one. Launched when you say go. 30 days of support after.',
     icon: (
@@ -50,7 +50,7 @@ export default function ProcessTeaser() {
       <div className="container">
         <div className="section-head" data-reveal>
           <span className="eyebrow">How We Work</span>
-          <h2>From first call to live software<br />in 3-5 weeks.</h2>
+          <h2>From first call to live software<br />in 5 days to 1 week.</h2>
         </div>
 
         <div className="process-teaser__track">

@@ -20,12 +20,12 @@ export default function ProblemSection() {
       <div className="container">
         <div className="section-head" data-reveal>
           <span className="eyebrow">The Problem</span>
-          <h2>Your admin is software&apos;s job.</h2>
+          <h2>You didn&apos;t start your business to do paperwork.</h2>
           <p>
-            Booking, billing, scheduling, reporting, follow-ups. If you&apos;re still doing
-            it in spreadsheets or WhatsApp, you&apos;re paying for software in hours instead
-            of euros.
+            Booking. Billing. Reminders. Reports. Follow-ups. If you&apos;re still doing
+            these by hand or on WhatsApp, you&apos;re working a second job for free.
           </p>
+          <p>We build the tool that does it for you.</p>
         </div>
         <div className="problem__grid">
           {/* Before card */}

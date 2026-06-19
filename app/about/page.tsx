@@ -3,7 +3,7 @@ import type { Metadata } from 'next';
 
 export const metadata: Metadata = {
   title: 'About',
-  description: 'Prashant Patitripathi — COO at Sarg.io, mentor to 500+ developers across 6 countries, and the person who builds every Bluethroat project personally. Irish-registered, Shimla-based.',
+  description: 'Prashant Patitripathi — COO at Sarg.io, mentor to 500+ developers across 4 countries, and the person who builds every Bluethroat project personally. Irish-registered, Shimla-based.',
 };
 
 const credentials = [
@@ -190,6 +190,10 @@ export default function AboutPage() {
         <div className="container">
           <span className="credentials__eyebrow eyebrow" data-reveal>Background</span>
           <h2 className="credentials__title" data-reveal>Experience &amp; credentials.</h2>
+          <p className="credentials__current" data-reveal>
+            Currently building for: clinics, gyms, coaches, brokers, consultants across
+            Ireland, UK, Australia, and India.
+          </p>
           <div className="credentials__grid">
             {credentials.map((c) => (
               <div className="cred" key={c.title} data-reveal>
@@ -241,7 +245,7 @@ export default function AboutPage() {
                 WhatsApp Me
               </Link>
               <a
-                href="mailto:hello@bluethroat.in"
+                href="mailto:hello@bluethroat.ie"
                 className="btn btn-secondary btn-lg"
               >
                 <svg aria-hidden="true" width="18" height="18"><use href="#icon-mail" /></svg>

@@ -15,6 +15,9 @@ export default function Footer() {
             <span className="mono" style={{ color: 'var(--ink-faint)', fontSize: '0.78rem' }}>
               Dublin, Ireland · Shimla, India
             </span>
+            <span className="mono" style={{ color: 'var(--ink-faint)', fontSize: '0.78rem', display: 'block', marginTop: '0.4rem' }}>
+              Bluethroat Ltd. Irish-registered company. 20+ businesses across 4 countries.
+            </span>
           </div>
           <div className="footer__cols">
             <div className="footer__col">
@@ -35,8 +38,8 @@ export default function Footer() {
                   </a>
                 </li>
                 <li>
-                  <a href="mailto:hello@bluethroat.in">
-                    hello@bluethroat.in
+                  <a href="mailto:hello@bluethroat.ie">
+                    hello@bluethroat.ie
                   </a>
                 </li>
                 <li>

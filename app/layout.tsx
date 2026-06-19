@@ -36,7 +36,7 @@ export const metadata: Metadata = {
   },
   description:
     'Automation dashboards and web platforms for non-tech professionals in Europe. Irish-registered. Builder-led. Trusted by YC-backed teams.',
-  metadataBase: new URL('https://bluethroat.in'),
+  metadataBase: new URL('https://bluethroat.ie'),
   openGraph: {
     title: 'Bluethroat — AI automation & web platforms for European SMEs',
     description:

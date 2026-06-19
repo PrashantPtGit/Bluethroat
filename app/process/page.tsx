@@ -3,14 +3,14 @@ import type { Metadata } from 'next';
 
 export const metadata: Metadata = {
   title: 'Process',
-  description: 'From first call to live software in 3–5 weeks. Here is exactly how we work — step by step, with clear deliverables at each stage.',
+  description: 'From first call to live software in 5 days. Here is exactly how we work — step by step, with clear deliverables at each stage.',
 };
 
 const steps = [
   {
     num: '01',
     title: 'Discovery Call',
-    duration: '30 min — free',
+    duration: 'Same day · Free',
     description: 'We align on your problem, your users, and what success looks like. No NDA required, no commitment.',
     deliverables: ['Written brief summarising the scope', 'Initial tech stack recommendation', 'First rough timeline estimate'],
     detail: "I ask 10 sharp questions. Most founders come in knowing what they want to build. My job is to surface what they actually need to build — the smallest, highest-value version that solves the real problem.",
@@ -18,7 +18,7 @@ const steps = [
   {
     num: '02',
     title: 'Proposal + Demo',
-    duration: '2–3 business days',
+    duration: '1-2 days',
     description: 'A written proposal with scope, timeline, price, and a clickable Figma prototype so you can see it before committing.',
     deliverables: ['Fixed-price written proposal', 'Figma prototype / wireframes', 'Architecture decision record (ADR)'],
     detail: "You get a PDF proposal, not a pitch deck. Everything is fixed: scope, timeline, and price. No hidden clauses. If scope changes, we agree in writing first — changes are tracked and priced as add-ons, never surprises.",
@@ -26,7 +26,7 @@ const steps = [
   {
     num: '03',
     title: 'Build Phase',
-    duration: '2–5 weeks',
+    duration: '3-5 days',
     description: 'Daily commits to a staging URL you can access throughout. Weekly video update. Real progress, not status reports.',
     deliverables: ['Weekly demo videos (Loom)', 'Staging URL live from day 2', 'Weekly written progress note'],
     detail: "I write code every day. You can open the staging URL at any point and test it yourself. I use GitHub for version control — you have read access throughout. If something does not look right, you tell me and I fix it same day.",
@@ -34,7 +34,7 @@ const steps = [
   {
     num: '04',
     title: 'Launch + Training',
-    duration: '2–3 days',
+    duration: '1 day',
     description: 'Production deployment, domain configuration, team training, and a full handoff document — so you are never dependent on me to keep it running.',
     deliverables: ['Production deployment on your infrastructure', '1-hour live training session (recorded)', 'Full handoff doc: architecture, env vars, runbook'],
     detail: "Everything is deployed to your Vercel, your Supabase, your domain. I write you a runbook any developer can follow. The training session is recorded so your team can reference it. You own everything from this point.",
@@ -42,7 +42,7 @@ const steps = [
   {
     num: '05',
     title: 'Ongoing Support',
-    duration: 'Optional retainer',
+    duration: 'Ongoing',
     description: 'Async Slack support, monthly retainer, or nothing — your choice. Your code does not stop working just because the contract ends.',
     deliverables: ['30-day bug-fix warranty (included)', 'Optional async retainer from ₹15k/mo', 'Optional feature sprint packs'],
     detail: "Growth Build includes 30 days of post-launch support for bugs in delivered scope. After that, you can continue on an async retainer, hire a developer using the codebase, or simply use what was built. I write code that does not require me to maintain it.",
@@ -115,11 +115,10 @@ export default function ProcessPage() {
           <h1 className="phero__title">
             From first call to<br />
             <span className="grad-text">live software</span><br />
-            in 3–5 weeks.
+            in 5 days.
           </h1>
           <p className="phero__sub">
-            A transparent, predictable process — so you always know exactly
-            where your project stands and what comes next.
+            Yes, really. We have a team. We move fast.
           </p>
           <div className="phero__cta">
             <Link href="https://wa.me/919876543210" className="btn btn-primary btn-lg" target="_blank" rel="noopener noreferrer">

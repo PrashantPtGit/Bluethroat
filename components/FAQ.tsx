@@ -6,11 +6,11 @@ import { AnimatePresence, motion } from 'framer-motion';
 const faqs = [
   {
     q: 'How much does a typical project cost?',
-    a: 'A Launch package (website + booking + payments) runs €1,800–2,500. A full Platform build runs €3,500–6,000. Retainer support is €800–1,500/month. Scope and pricing are agreed upfront — no surprises, no change orders.',
+    a: 'A Launch package (website + booking + payments) runs €1,010–1,400 at our current limited-time price (normally €1,800–2,500). A full Platform build runs €1,950–3,300 (normally €3,500–6,000). Retainer support is €450–850/month (normally €800–1,500). Scope and pricing are agreed upfront — no surprises, no change orders.',
   },
   {
     q: 'How long from first message to live software?',
-    a: 'A Launch build takes 10 days. A Platform build takes 3-5 weeks. The clock starts when we agree scope, not when you first message. Discovery Call is free and can happen within 24 hours.',
+    a: 'Both take 5-7 days. The clock starts when we agree scope, not when you first message. Discovery Call is free and can happen within 24 hours.',
   },
   {
     q: "What if I'm not technical?",

@@ -25,19 +25,18 @@ export default function AboutSection() {
             <span className="eyebrow">Builder-Led</span>
 
             <h2 className="about__headline">
-              I sell you me.<br />
-              Not a project manager.
+              You message me.<br />
+              I write the code.
             </h2>
 
             <p>
-              I started teaching code to fund my own learning. Six years later,
-              I&apos;ve mentored 500+ developers across 6 countries — and built six
-              production platforms for real businesses.
+              No project managers. No long email chains. No surprise invoices. Just one
+              builder who&apos;s done this 20+ times — and answers within 2 hours.
             </p>
             <p>
-              Most agencies sell you a project manager who tells a dev team what to do.
-              I sell you me. You message me on WhatsApp, I write the code. No layers,
-              no losses in translation.
+              I started teaching code to fund my own learning. Six years later,
+              I&apos;ve mentored 500+ developers across 4 countries — and built six
+              production platforms for real businesses.
             </p>
             <p>
               Irish-registered for European trust. India-based for honest pricing.
@@ -45,7 +44,7 @@ export default function AboutSection() {
             </p>
 
             <div className="about__pills">
-              <span className="about__pill">COO at Sarg.io</span>
+              <span className="about__pill">20+ businesses helped</span>
               <span className="about__pill">Mentor to 500+ devs</span>
               <span className="about__pill">Trusted by YC-backed teams</span>
             </div>

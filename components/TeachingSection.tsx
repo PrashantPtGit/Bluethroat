@@ -17,8 +17,8 @@ export default function TeachingSection() {
           <span className="eyebrow">Social Proof</span>
           <h2>
             500+ developers.<br />
-            6 countries.<br />
-            6 years of shipping.
+            20+ businesses.<br />
+            4 countries.
           </h2>
           <p>
             Live from real teaching sessions and project reviews with engineers
@@ -46,7 +46,8 @@ export default function TeachingSection() {
         <div className="live__stats" data-reveal>
           {[
             { val: '500', suffix: '+', label: 'Developers mentored' },
-            { val: '6',   suffix: '',  label: 'Countries reached' },
+            { val: '20',  suffix: '+', label: 'Businesses helped' },
+            { val: '4',   suffix: '',  label: 'Countries reached' },
             { val: '100', suffix: '%', label: 'Builder-led, hands-on' },
           ].map((s) => (
             <div key={s.label} className="live__stat glass">

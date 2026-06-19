@@ -22,12 +22,12 @@ export default function FinalCTA() {
           <span className="cta-final__eyebrow eyebrow">Ready?</span>
 
           <h2 className="cta-final__headline">
-            Let&apos;s see if we fit.
+            Let&apos;s see if we&apos;re a fit.
           </h2>
 
           <p className="cta-final__sub">
-            30-minute call. Free. No pitch deck. I&apos;ll ask about your business,
-            you&apos;ll see how I think.
+            30-minute call. Free. No pitch. I&apos;ll ask about your business. You&apos;ll
+            see how I think. If it&apos;s a fit, we&apos;ll talk numbers.
           </p>
 
           <div className="cta-final__actions">

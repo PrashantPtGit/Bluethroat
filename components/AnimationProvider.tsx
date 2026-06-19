@@ -1,8 +1,11 @@
 'use client';
 
 import { useEffect } from 'react';
+import { usePathname } from 'next/navigation';
 
 export default function AnimationProvider() {
+  const pathname = usePathname();
+
   useEffect(() => {
     // body.loaded triggers CSS reveal animations
     document.body.classList.add('loaded');
@@ -162,7 +165,7 @@ export default function AnimationProvider() {
         el.removeEventListener('mouseleave', leave);
       });
     };
-  }, []);
+  }, [pathname]);
 
   return null;
 }

@@ -2,23 +2,23 @@ import Link from 'next/link';
 import { projects } from '@/data/projects';
 
 const bgMap: Record<string, string> = {
-  fitbook:      '#060D1A',
+  onair:       '#08131E',
+  medred:      '#060C1A',
   skillconnect: '#061320',
-  sadhana:      '#08131E',
-  bhaagya:      '#080F1C',
-  medred:       '#060C1A',
-  harmony:      '#080E1E',
+  applyengine: '#080F1C',
+  fitbook:     '#060D1A',
+  harmony:     '#080E1E',
 };
 const accentMap: Record<string, string> = {
-  fitbook:      '#6789B5',
+  onair:       '#B0C4DE',
+  medred:      '#C4D4E8',
   skillconnect: '#7C9EC7',
-  sadhana:      '#B0C4DE',
-  bhaagya:      '#8CA6C4',
-  medred:       '#C4D4E8',
-  harmony:      '#94B0CC',
+  applyengine: '#8CA6C4',
+  fitbook:     '#6789B5',
+  harmony:     '#94B0CC',
 };
 
-const featuredIds = ['fitbook', 'bhaagya'];
+const featuredIds = ['onair', 'medred'];
 const featured = projects.filter((p) => featuredIds.includes(p.id));
 const smaller  = projects.filter((p) => !featuredIds.includes(p.id));
 
@@ -119,7 +119,7 @@ export default function DemosGrid() {
         <div className="section-head" data-reveal>
           <span className="eyebrow">Live Work</span>
           <h2>Real software. Real businesses.</h2>
-          <p>Six platforms in production. Each solved a problem for a real person.</p>
+          <p>Six platforms built from scratch. Each solved a problem for a real business.</p>
         </div>
 
         {/* Featured row — 2 large */}
